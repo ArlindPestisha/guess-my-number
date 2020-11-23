@@ -14,15 +14,33 @@ document.querySelector('.check').addEventListener('click', function () {
   //Using if conditionals to check if it has a number as a first step
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No number!';
+
+    
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct Number';
   } else if (guess > secretNumber) {
-    document.querySelector('.message').textContent = 'To high try again';
+    if (score > 1) {
+      document.querySelector('.message').textContent = '📈 To high try again';
     score--
     document.querySelector('.score').textContent = score
+    } else {
+      document.querySelector('.message').textContent = '🧨 You lost the game!';
+      score--
+      document.querySelector('.score').textContent = 0
+    }
+    
   } else if (guess < secretNumber) {
-    document.querySelector('.message').textContent = 'To low try again';
-    score--
-    document.querySelector('.score').textContent = score
+    if (score > 1) {
+      document.querySelector('.message').textContent = '📉 To low try again';
+      score--
+      document.querySelector('.score').textContent = score
+
+    } else {
+      document.querySelector('.message').textContent = '🧨 You lost the game!';
+      score--
+      document.querySelector('.score').textContent = 0
+    }
+    
+    
   }
 });
