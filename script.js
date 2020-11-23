@@ -12,12 +12,17 @@ document.querySelector('.check').addEventListener('click', function () {
   console.log(guess, typeof guess);
 
   //Using if conditionals to check if it has a number as a first step
+  // When the is no input
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No number!';
 
-    
+// This is a logic for when the player wins
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct Number';
+    document.querySelector('body').style.backgroundColor = '#60b347'
+    
+    document.querySelector('.number').style.width = '30rem'
+// This is for when the guess is to high
   } else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📈 To high try again';
@@ -28,7 +33,7 @@ document.querySelector('.check').addEventListener('click', function () {
       score--
       document.querySelector('.score').textContent = 0
     }
-    
+// This is when the guess is to low
   } else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📉 To low try again';
