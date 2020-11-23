@@ -1,6 +1,8 @@
 'use strict';
 // Building the logic
-const secretNumber = Math.trunc(Math.random() * 20 + 1);
+const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let score = 20
+document.querySelector('.number').textContent = secretNumber;
 
 // Adding eventlistner to the Check! button
 document.querySelector('.check').addEventListener('click', function () {
@@ -13,6 +15,14 @@ document.querySelector('.check').addEventListener('click', function () {
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No number!';
   } else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = '🎉 Correct Number'
+    document.querySelector('.message').textContent = '🎉 Correct Number';
+  } else if (guess > secretNumber) {
+    document.querySelector('.message').textContent = 'To high try again';
+    score--
+    document.querySelector('.score').textContent = score
+  } else if (guess < secretNumber) {
+    document.querySelector('.message').textContent = 'To low try again';
+    score--
+    document.querySelector('.score').textContent = score
   }
 });
